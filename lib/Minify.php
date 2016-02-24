@@ -427,6 +427,16 @@ class Minify {
 
         return $out['content'];
     }
+    
+    public function run($options = array())
+    {
+        $env = new Minify_Env();
+        $sourceFactory = new Minify_Source_Factory($env, array(
+            'checkAllowDirs' => false,
+        ), $this->cache);
+        $controller = new Minify_Controller_Files($env, $sourceFactory);
+        return $this->serve($controller, $options);
+    }
 
     /**
      * Show an error page
