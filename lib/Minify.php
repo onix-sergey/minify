@@ -309,7 +309,7 @@ class Minify {
             // the goal is to use only the cache methods to sniff the length and
             // output the content, as they do not require ever loading the file into
             // memory.
-            $cacheId = $this->_getCacheId();
+            $cacheId = isset($options['cacheId']) ? $options['cacheId'] : 'minify_' . $this->_getCacheId();
             $fullCacheId = ($this->options['encodeMethod']) ? $cacheId . '.gz' : $cacheId;
 
             // check cache for valid entry
